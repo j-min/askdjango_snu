@@ -1,2 +1,6 @@
-askdjango/settings.py
-slackbot/config.py
+*.settings.py
+*.config.py
+.ipynb_checkpoints/*
+.idea/*
+*.sqlite3
+
