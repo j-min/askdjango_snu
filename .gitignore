@@ -1,6 +1,15 @@
+
+# configurations #
 *.settings.py
 *.config.py
+
+# random ipynb #
 .ipynb_checkpoints/*
-.idea/*
+*.ipynb
+
+# DB
 *.sqlite3
 
+# OS generated files #
+.DS_Store*
+.idea/*
