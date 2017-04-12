@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.views.generic import DetailView
+from dojo.models import Post
 import json
+
 # Create your views here.
 
 # def mysum(request, numbers):
@@ -33,3 +36,12 @@ def json_reponse(request):
     # return HttpResponse(json_string, content_type='application/json')
     return JsonResponse(data, json_dumps_params={'ensure_ascii': False})
 
+
+class post_detail(DetailView):
+    model = Post
+    template_name = 'dojo/post_detail.html'
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        self.object.hits+=1
+        self.object.save()

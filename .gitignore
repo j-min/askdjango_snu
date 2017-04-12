@@ -12,8 +12,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-
-# C extensions
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
 *.so
 
 # Distribution / packaging
@@ -86,9 +90,28 @@ ENV/
 # mkdocs documentation
 /site
 
-# DB
+# Packages
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Databases
+*.sql
+*.sqlite
 *.sqlite3
 
 # OS generated files
-.DS_Store*
-.idea/*
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
