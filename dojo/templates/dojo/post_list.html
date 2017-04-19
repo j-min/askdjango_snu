@@ -6,7 +6,7 @@
   <title> Jaemin's Naver News List </title>
 </head>
 <body>
-  dojo/templates/dojo/post_list.html
+  template: dojo/templates/dojo/post_list.html
 
   <h1> Jaemin's Post List </h1>
 
@@ -18,7 +18,9 @@
   <ul>
     {% for post in post_list %}
       <li>
-        {{ post.title }}
+        <a href="/dojo/{{ post.id }}"/>
+          {{ post.title }}
+        </a>
       </li>
     {% endfor %}
   </ul>
