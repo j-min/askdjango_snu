@@ -5,10 +5,10 @@
   <title>mypost_detailview</title>
 </head>
 <body>
-  <h1>{{ object.title }}</h1>
-  <p>{{ object.content }}</p>
-  <p>Reporter: {{ object.reporter }}</p>
-  <p>Published: {{ object.created_at }}</p>
-  <p>Updated: {{ ojbect.updated_at }}</p>
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.content|linebreaks }}</p>
+  <p>Reporter: {{ post.reporter }}</p>
+  <p>Published: {{ post.created_at }}</p>
+  <p>Updated: {{ post.updated_at }}</p>
 </body>
 </html>

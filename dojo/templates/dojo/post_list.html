@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width">
+  <title> Jaemin's Naver News List </title>
+</head>
+<body>
+  dojo/templates/dojo/post_list.html
+
+  <h1> Jaemin's Post List </h1>
+
+  <form action="" method="get">
+    <input type="text" name="q" value="{{ q }}"/>
+    <input type="submit" value="검색" />
+  </form>
+
+  <ul>
+    {% for post in post_list %}
+      <li>
+        {{ post.title }}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

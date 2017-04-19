@@ -36,7 +36,10 @@ class Post(models.Model):
                               help_text='경도, 위도 포맷으로 입력')
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
-    test_field = models.IntegerField(default=10)
+
+    # ordering
+    class Meta:
+        ordering = ['-id']
 
     reporter = models.ForeignKey('Reporter', null=True, verbose_name='기자')
 
