@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8'>
-  <title>mypost_detailview</title>
-</head>
-<body>
+{% extends 'dojo/base.html' %}
+
+{% block content %}
   <h1>{{ post.title }}</h1>
   <p>{{ post.content|linebreaks }}</p>
   <p>Reporter: {{ post.reporter }}</p>
   <p>Published: {{ post.created_at }}</p>
   <p>Updated: {{ post.updated_at }}</p>
-</body>
-</html>
+{% endblock content %}
