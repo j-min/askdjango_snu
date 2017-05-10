@@ -36,6 +36,7 @@ class Post(models.Model):
                               help_text='경도, 위도 포맷으로 입력')
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
+    hits = models.PositiveIntegerField(default=0)
 
     # ordering
     class Meta:
@@ -43,17 +44,9 @@ class Post(models.Model):
 
     reporter = models.ForeignKey('Reporter', null=True, verbose_name='기자')
 
-    # def get_reporter(self):
-    #     try:
-    #         return self.reporter.name
-    #     except:
-    #         return 'unknown'
-    # get_reporter.short_description = '기자'
-
 
     def __str__(self):
         return self.title
-
 
 class Reporter(models.Model):
     name = models.CharField(max_length=20, default='unknown 기자', verbose_name='이름')
@@ -67,3 +60,8 @@ class Reporter(models.Model):
         except:
             return 'no post'
     get_posts.short_description = '첫 기사'
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post)
+    message = models.TextField()

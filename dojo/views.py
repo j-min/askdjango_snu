@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse, Http404
 from django.views.generic import DetailView
+from django.db.models import F
 from dojo.models import Post
+
 
 import json
 
@@ -48,8 +50,8 @@ def post_list(request):
     })
 
 def post_detail(request, id):
+    Post.objects.filter(id=id).update(hits=F('hits')+1)
     post = get_object_or_404(Post, id=id)
-
     return render(request, 'dojo/post_detail.html', {
         'post': post
     })
