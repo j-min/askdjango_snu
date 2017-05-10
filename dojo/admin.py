@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from dojo.models import Post, Reporter, Comment
+from dojo.models import Post, Reporter, Comment, Tag
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'reporter', 'tags', 'content_size', 'status', 'created_at', 'updated_at']
-    list_editable = ['title', 'reporter', 'tags']
+    list_display = ['id', 'title', 'reporter', 'get_tags', 'content_size', 'status', 'created_at', 'updated_at']
+    list_editable = ['title', 'reporter']
     search_field = ['title', 'reporter']
     # list_display_links = ['id', 'title']
     list_filter = ['created_at', 'status']
@@ -21,6 +21,9 @@ class PostAdmin(admin.ModelAdmin):
         return mark_safe(html)
     content_size.short_decription = '내용 글자수'
 
+    # def get_tags(self, post):
+    #     return "\n".join([tag.name for tag in post.tag_set.all()])
+
 
 @admin.register(Reporter)
 class ReporterAdmin(admin.ModelAdmin):
@@ -28,4 +31,8 @@ class ReporterAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
     pass
