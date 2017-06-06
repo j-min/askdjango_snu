@@ -5,37 +5,9 @@ from django.db.models import F
 from dojo.models import Post
 from django.utils import timezone
 from .forms import PostForm
-
 import datetime
-# import json
 
-#
-# def mysum(request, numbers):
-#     numbers = numbers.split('/')
-#
-#     def convert_fn(num):
-#         try:
-#             return int(num)
-#         except:
-#             return 0
-#
-#     sum_numbers = sum(map(convert_fn, numbers))
-#
-#     return HttpResponse(sum_numbers)
-#
-# def hello(reuquest, name, age):
-#     return HttpResponse(f"안녕하세요, {name}. {age}살이시네요.")
-#
-# def json_reponse(request):
-#     data = {
-#         'message': '안녕, 파이썬&장고',
-#         'items': ['파이썬', '장고', 'Celery', 'Azure', 'AWS'],
-#     }
-#     # json_string = json.dumps(data, ensure_ascii=False)
-#     # return HttpResponse(json_string, content_type='application/json')
-#     return JsonResponse(data, json_dumps_params={'ensure_ascii': False})
-
-
+# dojoviews.py
 def post_list(request):
     post_list = Post.objects.all()
 
@@ -69,9 +41,7 @@ def archives(request):
         days_list.append(start+delta)
 
     return render(request, 'dojo/archives.html', {
-        'day_list': day_list,
-    })
-
+        'day_list': day_list,})
 
 def post_new(request):
     if request.method == 'GET':

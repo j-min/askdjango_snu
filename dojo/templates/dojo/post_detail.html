@@ -1,8 +1,9 @@
+<!-- dojo/templates/dojo/post_detail.html -->
+
 {% extends 'dojo/base.html' %}
+{% load imagekit %}
 
 {% block content %}
-  <!-- edit -->
-
 
   <h1>{{ post.title }}</h1>
 
@@ -14,7 +15,10 @@
   <p>Updated: {{ post.updated_at }}</p>
 
   {% if post.photo %}
-    <img src="{{ post.photo_thumbnail.url }}" style="max-width: 100%;" />
+    <img src="{{ post.photo.url }}" style="max-width: 100%;" />
+
+    {% thumbnail "100x100" post.photo as thumb %}
+    <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}"/>
   {% endif %}
 
 
