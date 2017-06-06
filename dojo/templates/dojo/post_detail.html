@@ -1,9 +1,30 @@
 {% extends 'dojo/base.html' %}
 
 {% block content %}
+  <!-- edit -->
+
+
   <h1>{{ post.title }}</h1>
+
+  <a class="btn btn-default" href="{% url 'dojo:post_edit' id=post.id %}">Edit Post <span class="glyphicon glyphicon-pencil"></span></a>
+
   <p>{{ post.content|linebreaks }}</p>
   <p>Reporter: {{ post.reporter }}</p>
-  <p>Published: {{ post.created_at }}</p>
+  <p>Published: {{ post.created_at|timesince }} ago</p>
   <p>Updated: {{ post.updated_at }}</p>
+
+  {% if post.photo %}
+    <img src="{{ post.photo.url }}" style="max-width: 100%;" />
+  {% endif %}
+
+
+  <hr />
+  {% if prev_post %}
+    <a href ="{% url 'dojo:post_detail' prev_post.id %}"이전</a>
+  {% endif %}
+
+  {% if prev_post %}
+    <a href ="{% url 'dojo:post_detail' next_post.id %}"다음</a>
+  {% endif %}
+
 {% endblock content %}

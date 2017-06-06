@@ -3,9 +3,7 @@ from django.db import models
 from django.forms import ValidationError
 from django.utils import timezone
 
-def lnglat_validator(value):
-    if not re.match(r'^(\d+\.?\d*),(\d+\.?\d*)$', value):
-        raise ValidationError('Invalid LngLat Type')
+from .validators import lnglat_validator, min_length_3_validator
 
 class Post(models.Model):
 
@@ -22,8 +20,9 @@ class Post(models.Model):
     #     ('sports', '스포츠')
     # ]
 
-    title = models.CharField(max_length=100, verbose_name='제목')
+    title = models.CharField(max_length=100, verbose_name='제목', validators=[min_length_3_validator])
     content = models.TextField(help_text='Markdown 문법을 써주세요.')
+    photo = models.ImageField(blank=True, upload_to='dojo/post/%Y/%m/%d')
     status = models.CharField(max_length=1,
                             choices=STATUS_CHOICES, default='d')
     tag_set = models.ManyToManyField('Tag')

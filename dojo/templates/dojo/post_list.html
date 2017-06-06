@@ -1,16 +1,20 @@
 {% extends 'dojo/base.html' %}
 {% block content %}
   <h1> Jaemin's Post List </h1>
+
   <form action="" method="get">
     <input type="text" name="q" value="{{ q }}"/>
     <input type="submit" value="검색" />
   </form>
+
+  <a class="btn btn-default" href="{% url 'dojo:post_new' %}">New Post <span class="glyphicon glyphicon-plus"></span></a>
+
   <ul>
     {% for post in post_list %}
       <li>
-        <a href="/dojo/{{ post.id }}"/>
-          {{ post.title }}
-        </a>
+        <a href="{% url "dojo:post_detail" post.id %}">{{ post.title }}</a>
+        hits: {{ post.hits }}
+        {{ post.created_at|timesince }}
       </li>
     {% endfor %}
   </ul>

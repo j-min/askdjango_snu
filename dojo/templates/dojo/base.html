@@ -1,8 +1,8 @@
-{% load static %}
+{% load staticfiles %}
 <html>
     <head>
         <title>Jaemin's blog</title>
-        <!-- <link rel="stylesheet" href="{% static 'BBC/bootstrap.css' %}"/> -->
+        <link rel="stylesheet" href="{% static 'BBC/bootstrap.css' %}"/>
 
         <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
         <link rel="stylesheet" href="{% static 'outlook-lite/css/slick.css' %}">
@@ -37,15 +37,34 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
-            </div><!--/.nav-collapse -->
+            </div>
           </div>
         </nav>
 
 
         <div class="page-header">
             <h1><a href="/">Jaemin's Blog</a></h1>
+
         </div>
-        <div class="container">
+
+
+
+        <!-- <p>
+          <img src="{% static 'dojo/django_pony.png' %}" style='width: 200px;' />
+          <img src="{% static 'dojo/bonobono.png' %}" style='width: 200px;' />
+        </p> -->
+
+
+
+
+        <!-- /*<style>
+          body {
+            background-image: url('{% static 'dojo/bonobono.png' %}');
+            background-size: cover;
+          }
+        </style>*/ -->
+
+        <div class="post">
           {% block content %}
           {% endblock %}
         </div>
